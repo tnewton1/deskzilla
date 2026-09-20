@@ -31,6 +31,10 @@ This fork adds and maintains native Apple Silicon macOS support, including:
 Additional changes made in this fork should be documented in Git history and,
 when significant, in this file or the project README.
 
+The application About dialog identifies ALM Works as the original developer and
+credits Travis Newton for the Apple Silicon fork modifications. Binary macOS
+bundles also include the GPL license, this fork notice, and `CREDITS.md`.
+
 Deskzilla, ALM Works, Bugzilla, Java, Apple, macOS, and other names or marks
 remain the property of their respective owners. This fork does not claim
 ownership of the original Deskzilla project or its trademarks.

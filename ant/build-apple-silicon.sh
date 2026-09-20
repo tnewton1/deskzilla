@@ -85,6 +85,15 @@ if ! command -v ant >/dev/null 2>&1; then
   exit 1
 fi
 
+# Attribution and GPL notices are part of the distributable fork. Keep these
+# checks in the top-level build so a release cannot accidentally omit them.
+for notice in LICENSE FORK-NOTICE.md CREDITS.md; do
+  if [[ ! -f "$PROJECT_DIR/$notice" ]]; then
+    echo "ERROR: required attribution file is missing: $PROJECT_DIR/$notice" >&2
+    exit 1
+  fi
+done
+
 "$SCRIPT_DIR/fetch-apple-silicon-deps.sh"
 
 export JAVA_HOME="$JDK8_HOME"
@@ -97,6 +106,7 @@ echo "  JVM architecture: $JAVA_ARCH"
 echo "  JDK: $JDK8_HOME"
 echo "  Ant: $(ant -version)"
 echo "  Build number: $BUILD_NUMBER"
+echo "  Attribution: ALM Works original project + Travis Newton Apple Silicon fork"
 
 ANT_ARGS=(
   -f build.xml

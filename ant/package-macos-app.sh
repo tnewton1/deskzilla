@@ -13,6 +13,7 @@ APP_PAYLOAD="$RESOURCES/deskzilla"
 BUNDLED_JRE="$PLUGINS/jre"
 ICON_FILE="$RESOURCES/Deskzilla.icns"
 SOURCE_ICON="$PROJECT_DIR/env/macos/Deskzilla.icns"
+NOTICES_DIR="$RESOURCES/Notices"
 
 if [[ ! -f "$DIST_DIR/deskzilla.jar" ]]; then
   echo "ERROR: Deskzilla distribution was not found at $DIST_DIR" >&2
@@ -26,8 +27,18 @@ if [[ -z "${JDK8_HOME:-}" || ! -x "$JDK8_HOME/bin/java" || ! -d "$JDK8_HOME/jre"
 fi
 
 rm -rf "$APP_DIR"
-mkdir -p "$MACOS" "$APP_PAYLOAD" "$PLUGINS"
+mkdir -p "$MACOS" "$APP_PAYLOAD" "$PLUGINS" "$NOTICES_DIR"
 cp -R "$DIST_DIR"/. "$APP_PAYLOAD"/
+
+# Ship the fork and licensing notices with the application bundle so attribution
+# remains available even when a binary release is distributed without source.
+for notice in LICENSE FORK-NOTICE.md CREDITS.md; do
+  if [[ ! -f "$PROJECT_DIR/$notice" ]]; then
+    echo "ERROR: required attribution file is missing: $PROJECT_DIR/$notice" >&2
+    exit 1
+  fi
+  cp "$PROJECT_DIR/$notice" "$NOTICES_DIR/$notice"
+done
 
 # Install a proper macOS application icon. Prefer a source-controlled icon.
 # If the source icon is missing, import the original icon from an existing
@@ -160,6 +171,8 @@ cat > "$CONTENTS/Info.plist" <<'PLIST'
   <string>11.0</string>
   <key>NSHighResolutionCapable</key>
   <true/>
+  <key>NSHumanReadableCopyright</key>
+  <string>Deskzilla © 2004-2020 ALM Works. Apple Silicon fork modifications © 2026 Travis Newton. GPLv3.</string>
 </dict>
 </plist>
 PLIST

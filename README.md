@@ -77,3 +77,11 @@ fork-specific changes, and [LICENSE](LICENSE) for the GPLv3 license text.
 
 The fork is not affiliated with or endorsed by ALM Works. Original project and
 third-party names and marks remain the property of their respective owners.
+
+### Fork attribution in packaged applications
+
+The macOS application bundle preserves the original Deskzilla attribution and
+adds a visible credit for the Apple Silicon fork in **Deskzilla > About
+Deskzilla**. Packaged builds also include `LICENSE`, `FORK-NOTICE.md`, and
+`CREDITS.md` under `Deskzilla.app/Contents/Resources/Notices/`.
+
