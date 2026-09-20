@@ -380,6 +380,8 @@
     <native file="sqlite4java/sqlite4java-win32-x86.dll"/>
     <native file="sqlite4java/sqlite4java-win32-x64.dll"/>
     <native file="sqlite4java/libsqlite4java-osx.dylib"/>
+    <native file="sqlite4java/libsqlite4java-osx-aarch64.dylib"/>
+    <native file="sqlite4java/libsqlite4java-osx-arm64.dylib"/>
     <native file="sqlite4java/libsqlite4java-linux-i386.so"/>
     <native file="sqlite4java/libsqlite4java-linux-amd64.so"/>
   </lib>

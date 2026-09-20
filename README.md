@@ -61,3 +61,19 @@ or JAVA_HOME variable must be defined and point to the corresponding JRE or JDK.
  
  Copyright 2004–2020 [ALM Works, Inc](https://almworks.com/). This work is licensed under the terms of [GPL v3  license](https://www.gnu.org/licenses/gpl-3.0.html). 
  If you require a different license, please contact [info@almworks.com](info@almworks.com).
+## Apple Silicon macOS
+
+For native Apple Silicon builds, see [APPLE-SILICON.md](APPLE-SILICON.md) and run `ant/build-apple-silicon.sh` on an arm64 Mac.
+
+## About This Fork
+
+This repository is a modified fork of Deskzilla by ALM Works. Deskzilla remains
+copyright (C) 2004-2020 ALM Works, Inc. / ALM Works Ltd. and is distributed
+under the GNU General Public License version 3.
+
+This fork adds native Apple Silicon macOS support and related compatibility
+changes. See [FORK-NOTICE.md](FORK-NOTICE.md) for attribution and a summary of
+fork-specific changes, and [LICENSE](LICENSE) for the GPLv3 license text.
+
+The fork is not affiliated with or endorsed by ALM Works. Original project and
+third-party names and marks remain the property of their respective owners.

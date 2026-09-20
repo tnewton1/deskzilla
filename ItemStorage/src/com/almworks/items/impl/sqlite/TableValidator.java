@@ -445,7 +445,11 @@ class TableValidator {
 
   private static void checkIndexListColumns(SQLiteStatement pragma) throws SQLiteException {
     int c = pragma.columnCount();
-    if (c != 3)
+    // Modern SQLite returns additional columns from PRAGMA index_list
+    // (currently origin and partial). Deskzilla only relies on the original
+    // seq, name and unique columns, so accept newer result sets as long as
+    // those first three columns remain present and correctly named.
+    if (c < 3)
       throw new SQLiteException(0, "pragma index_list column count " + c);
     checkColumnName(pragma, 0, "seq");
     checkColumnName(pragma, 1, "name");
